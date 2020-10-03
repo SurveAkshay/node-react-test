@@ -1,0 +1,15 @@
+button {
+    outline-width: 0;
+}
+
+.btn.focus, .btn:focus {
+    box-shadow: none !important;
+}
+
+.navigation {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -25px;
+    padding: 15px 0 0;
+}

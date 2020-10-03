@@ -1,0 +1,33 @@
+.card {
+    max-width: 500px;
+    margin: 30px auto;
+    position: static;
+}
+
+.card img {
+    width: 35%;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.add_modal_container {
+    padding-top: 20px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.modal_container {
+    max-width: 1200px;
+}
+
+#preview_img {
+    width: 150px;
+    height: 200px;
+}
+
+.prodimage_container form {
+    margin-top: 92px !important;
+}

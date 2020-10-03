@@ -1,0 +1,18 @@
+.table-bordered {
+    border: 2px solid #000;
+    border-collapse: inherit;
+}
+
+.admin_product_container {
+    padding: 20px;
+}
+
+.edit_modal_container {
+    padding-top: 80px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 55;
+}

@@ -1,0 +1,23 @@
+.category_selected{
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.btn-light:not(:disabled):not(.disabled).active, .btn-light:not(:disabled):not(.disabled):active, .show>.btn-light.dropdown-toggle{
+    box-shadow: none !important;
+    color: #fff;
+    background-color: #343a40 !important;
+    border-color: #343a40 !important;
+}
+
+.btn-light.focus, .btn-light:focus {
+    box-shadow: none !important;
+    color: #fff;
+    background-color: #343a40 !important;
+    border-color: #343a40 !important;
+}
+
+.category_container {
+    background: #e1e1e1;
+}

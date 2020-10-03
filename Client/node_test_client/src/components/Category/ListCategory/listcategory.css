@@ -1,0 +1,21 @@
+.list_item {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.edit_category_modal_container {
+    padding-top: 20%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.list_container:nth-child(odd) {
+    background: #fff;
+  }
+  
+  .list_container:nth-child(even) {
+    background: #cecece;
+  }
