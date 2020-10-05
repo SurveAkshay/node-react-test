@@ -16,6 +16,11 @@ const CreateProduct = () => {
         const fetchData = async () => {
             const response = await API.get('/category');
             console.log(response);
+            if(response.data.length === 0) {
+                setMessageModalState(true);
+                setMessageModal('Please create a category before creating a product !!!');
+                messageModalUI = <MessageModal modalText={messageModal} />
+            }
             setCategoryList(response.data);
         }
 
@@ -32,7 +37,7 @@ const CreateProduct = () => {
         image: 'https://via.placeholder.com/150x200?text=Product+Image'
     }
 
-    const messageModalUI = isMessageModalOpen ? <MessageModal modalText={messageModal} /> : null;
+    let messageModalUI = isMessageModalOpen ? <MessageModal modalText={messageModal} /> : null;
 
     const [values, setValues] = useState(initialFieldValues);
 
@@ -154,7 +159,8 @@ const CreateProduct = () => {
                 // debugger;
         }
     }
-
+    console.log(categoryList);
+    
     return (
         <>
         {isModalOpen? (
@@ -226,7 +232,7 @@ const CreateProduct = () => {
         <div className="create_product_container text-center">
             {messageModalUI}
 
-            <div className="card">
+            {categoryList.length > 0 ? <div className="card">
                 <img src={window.location.origin + '/images/download-icon.svg'} className="card-img-top" alt="img" />
                 <div className="card-body px-0">
                     <h2 className="card-title">Add and manage your products</h2>
@@ -235,7 +241,7 @@ const CreateProduct = () => {
                         Create Product
                     </button>
                 </div>
-            </div>
+            </div> : null}
 
         </div>
         </>

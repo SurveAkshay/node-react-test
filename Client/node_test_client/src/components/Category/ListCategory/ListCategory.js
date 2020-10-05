@@ -13,6 +13,11 @@ function ListCategory() {
         const fetchData = async () => {
             const response = await API.get('/category');
             // console.log(response);
+            if(response.data.length === 0) {
+                setMessageModalState(true);
+                setMessageModal('Please create a category. No category found !!!');
+                messageModalUI = <MessageModal modalText={messageModal} />
+            }
             setCategoryList(response.data)
         }
 
@@ -26,7 +31,7 @@ function ListCategory() {
     const [categoryName, setCategoryName] = useState('');
     const [currentCategoryID, setCurrentCategoryID] = useState('');
 
-    const messageModalUI = isMessageModalOpen ? <MessageModal modalText={messageModal} /> : null;
+    let messageModalUI = isMessageModalOpen ? <MessageModal modalText={messageModal} /> : null;
     
     const openModal = (id,selectedCategory) => {
         setCurrentCategoryID(id);

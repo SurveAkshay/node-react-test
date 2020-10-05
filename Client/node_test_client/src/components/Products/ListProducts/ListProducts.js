@@ -39,7 +39,7 @@ const ListProducts = () => {
     })
     let imageFormData = new FormData();
 
-    const messageModalUI = isMessageModalOpen ? <MessageModal modalText={messageModal} /> : null;
+    let messageModalUI = isMessageModalOpen ? <MessageModal modalText={messageModal} /> : null;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -48,6 +48,11 @@ const ListProducts = () => {
             setProductsArr(response.data);
             const categoryResponse = await API.get('/category');
             console.log(categoryResponse);
+            if(response.data.length === 0) {
+                setMessageModalState(true);
+                setMessageModal('No products to show !!!');
+                messageModalUI = <MessageModal modalText={messageModal} />
+            }
             setCategoryList(categoryResponse.data)
             setLoading(false);
         }
@@ -382,7 +387,8 @@ const ListProducts = () => {
         <div className="position-relative">
         <div className="admin_product_container text-center" style={{marginBottom: '20px'}}>
             {messageModalUI}
-            <table className="table table-bordered">
+
+            {categoryList.length > 0 ? <table className="table table-bordered">
                 <thead>
                     <tr>
                         <th>Product ID</th>
@@ -396,14 +402,14 @@ const ListProducts = () => {
                 <tbody>
                     {currentPosts.map((item,indx) => <Product categoryName={categoryName} currentCategoryID={currentCategoryID} indx={indx} categoryList={categoryList} singleproduct={item} key={item._id} openModal={openModal} deleteProduct={deleteProduct} />)}
                 </tbody>
-            </table>
+            </table> : null}
         </div>
-        <ProductPagination 
+        {categoryList.length > 0 ? <ProductPagination 
             postsPerPage={postsPerPage}
             totalPosts={productsArr.length}
             paginate={paginate}
             currentPage={currentPage}
-        />
+        />: null}
         </div>
         </>
     )
